@@ -15,7 +15,8 @@ def sumar(a,b):
 def sumar_numeros(*args):
     resultado = 0
     for numero in args:
-        resultado = resultado + numero
+        # resultado = resultado + numero
+        resultado += numero
 
     return resultado
 
