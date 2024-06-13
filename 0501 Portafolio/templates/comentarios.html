@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block name %}
+<h1>Comentarios</h1>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-4">
+            <p>Tu opinion es imporante, deja tu comentario</p>
+            <form action="/comentarios" method="post">
+                <div class="mb-3">
+                    <label for="comentario">Comentario:</label>
+                    <input type="text" class="form-control" id="comentario" name="comentario">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
