@@ -18,6 +18,7 @@ from modules.routes import router
 
 app = Flask(__name__)
 app.register_blueprint(router)
+app.secret_key = 'watever'
 
 if __name__ == '__main__':
     app.run(debug=True)
