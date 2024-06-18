@@ -8,14 +8,20 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-6">
-            <p>Tu opinion es imporante, deja tu comentario</p>
+            <p>Tu opinión es importante, deja tu comentario</p>
+            <!-- Utiliza una variable messages para almacenar los mensajes flash, si existen, incluyendo sus categorías. -->
             {% with messages = get_flashed_messages(with_categories=true) %}
+            <!-- Verifica si hay mensajes flash -->
                 {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }} mt-4">
-                        {{ message }}
-                        </div>
-                    {% endfor %}
+                    <div id="flash-messages">
+                        <!-- Itera sobre cada mensaje flash -->
+                        {% for category, message in messages %}
+                        <!-- Muestra cada mensaje flash con la clase de alerta correspondiente a su categoría y un margen superior -->
+                            <div class="alert alert-{{ category }} mt-4">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
                 {% endif %}
             {% endwith %}
             <form action="/comentarios" method="post">
@@ -28,4 +34,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript para ocultar los mensajes flash después de 5 segundos
+    setTimeout(function() {
+        var flashMessages = document.getElementById('flash-messages');
+        if (flashMessages) {
+            flashMessages.style.display = 'none';
+        }
+    }, 5000);
+</script>
 {% endblock %}

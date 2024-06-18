@@ -35,10 +35,16 @@
     <div class="container">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
+            <!-- Encabezado principal que utiliza Jinja2 para permitir bloques de contenido dinámico en los templates hijos. -->
             <h1 class="display-4">{% block name %}{% endblock %}</h1>
             </div>
         </div>
     </div>
+
+    <!-- 
+    Bloque de Contenido Dinámico:
+    Define un bloque de contenido que será reemplazado por contenido específico de los templates hijos que extienden base.html. 
+    -->
 
     <hr>
     {% block body %}
