@@ -21,7 +21,7 @@ class Comentario(Base):
     __tablename__ = 'comentarios'
     id = Column(Integer, primary_key=True, index=True)
     comentario = Column(String(500), nullable=False)
-    timestap = Column(DateTime, default=datetime.now())
+    timestamp = Column(DateTime, default=datetime.now())
 
 # Crear la base de datos / Tabla en caso de no existir
 Base.metadata.create_all(bind=engine)

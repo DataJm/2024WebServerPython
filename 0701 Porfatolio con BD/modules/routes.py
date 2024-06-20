@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
+from modules.utils import Comentario, SessionLocal
 
 # Crear un blueprint llamado 'router'
 router = Blueprint('router', __name__)
@@ -31,13 +32,28 @@ def comentarios():
     Permite tanto solicitudes GET como POST.
     """
     if request.method == 'POST':
+        # TODO: No olvides agregar sanitización a este comentario
         comentario = request.form.get('comentario')
 
         # Procesar el comentario
-        print(f'Recibí el siguiente comentario: {comentario}')
+        # instanciar un nuevo comentario y crear una nueva sesión para mandarlo a la BD
+        nuevo_comentario = Comentario(comentario=comentario)
+        # Crear la sesión
+        session = SessionLocal()
 
-        # Mostrar un mensaje flash para informar al usuario que su comentario fue recibido
-        flash('Hemos recibido tu comentario, muchas gracias !!!', 'success')
+        try:
+            # Vamos a "intentar" insertar el nuevo registro
+            session.add(nuevo_comentario)
+            session.commit()
+            session.refresh(nuevo_comentario)
+            # Mostrar un mensaje flash para informar al usuario que su comentario fue recibido
+            flash('Hemos recibido tu comentario, muchas gracias !!!', 'success')
+        except:
+            # En caso de que cualquier linea de código del bloque "try" falle... ocurre esto
+            session.rollback()
+            flash('Ocurrió un error al guardar tu comentario. Intenta más tarde', 'danger')
+        finally:
+            session.close()       
 
         # Redirigir a la misma página de comentarios
         return redirect(url_for('router.comentarios'))
