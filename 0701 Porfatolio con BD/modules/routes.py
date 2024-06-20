@@ -60,3 +60,30 @@ def comentarios():
 
     # Si el método de la solicitud es GET, renderizar la plantilla de comentarios
     return render_template('comentarios.html')
+
+@router.route("/api/comentarios")
+def api_comentarios():
+    '''
+    Esta será nuestra API de comentarios,
+    Debemos conectarnos a la base de datos, extraer TODOS los comentarios
+    y pasarselos al usuario en formato JSON
+    '''
+    session = SessionLocal()
+    try:
+        # select * from comentarios
+        comentarios = session.query(Comentario).all()
+        # recordar que esto nos regresa un cursor
+        lista_comentarios = []
+        for comentario in comentarios:
+            lista_comentarios.append({
+                "id": comentario.id,
+                "texto": comentario.comentario,
+                "fecha": comentario.timestampaa
+            })
+
+        return lista_comentarios
+    except Exception as error:
+        print(error)
+        return {"error":"Ocurrió un problema"}
+    finally:
+        session.close()
