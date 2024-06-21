@@ -53,7 +53,7 @@ def comentarios():
             session.rollback()
             flash('Ocurrió un error al guardar tu comentario. Intenta más tarde', 'danger')
         finally:
-            session.close()       
+            session.close()
 
         # Redirigir a la misma página de comentarios
         return redirect(url_for('router.comentarios'))
