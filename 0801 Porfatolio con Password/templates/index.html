@@ -1,0 +1,34 @@
+<!-- Define el contenido del bloque body que fue especificado en base.html -->
+{% extends "base.html" %}
+
+<!-- Define el contenido del bloque name que fue especificado en base.html -->
+{% block name %}
+<h1>Home</h1>
+{% endblock %}
+
+<!-- Define el contenido del bloque body que fue especificado en base.html -->
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4>Gracias por visitar mi página Flask</h4>
+            <p>Aqui encontrarás información sobre mis proyectos, más acerca de mi y podrás dejar un comentario</p>
+        </div>
+    </div>
+    
+    <div class="row p-5">
+        <div class="col-4">
+            <p>Skills</p>
+        </div>
+        <div class="col-8">
+            <ul>
+                <li>Python</li>
+                <li>Desarrollo web</li>
+                <li>Flask</li>
+                <li>SQL</li>
+                <li>Javascript</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

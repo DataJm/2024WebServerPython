@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block name %}
+<h1>Dashboard</h1>
+{% endblock %}
+
+{% block body %}
+<div class="container bg-light">
+    <div class="row p-5">
+        <div class="col-12">
+            {% for comentario in comentarios %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        ID de comentario: {{ comentario.id }}
+                    </h5>
+                    <p class="card-text">{{comentario.comentario}}</p>
+                    <p class="card-text">{{comentario.timestamp}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
