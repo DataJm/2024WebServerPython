@@ -78,7 +78,7 @@ def api_comentarios():
             lista_comentarios.append({
                 "id": comentario.id,
                 "texto": comentario.comentario,
-                "fecha": comentario.timestampaa
+                "fecha": comentario.timestamp
             })
 
         return lista_comentarios
