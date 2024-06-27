@@ -6,5 +6,7 @@
         <hr class="my-4">
         <p>Registra una nueva cuenta o inicia sesión</p>
         <!-- Botones para crear nueva cuenta y registrarse -->
+         <a class="btn btn-primary btn-lg" href="{{ url_for('auth.register')}}">Registrarse</a>
+         <a class="btn btn-secondary btn-lg" href="{{ url_for('auth.login')}}">Login</a>
     </div>
 {% endblock %}

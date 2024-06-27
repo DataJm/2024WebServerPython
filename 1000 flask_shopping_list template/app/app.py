@@ -9,4 +9,5 @@ def create_app():
     Agregar las rutas a app, registrar esos blueprints
     '''
 
+
     return app
