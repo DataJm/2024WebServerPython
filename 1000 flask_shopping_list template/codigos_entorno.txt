@@ -1,0 +1,16 @@
+
+# Para crear el entorno virtual
+python -m venv pruebas
+
+# Para activar el entorno virtual
+source pruebas/Scripts/activate
+
+# Para revisar los paquetes instalados
+pip list
+
+# Después de haber instalado las dependencias, con este comando genero el respaldo
+# de todas las dependencias del proyecto
+pip freeze > requirements.txt
+
+# Podemos instalar desde un requirements.txt en pip
+pip install -r requirements.txt
