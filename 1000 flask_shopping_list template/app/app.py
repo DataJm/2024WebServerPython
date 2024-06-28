@@ -8,6 +8,10 @@ def create_app():
     '''
     Agregar las rutas a app, registrar esos blueprints
     '''
+    from app.auth.routes import auth
+    from app.main.routes import main
 
+    app.register_blueprint(auth)
+    app.register_blueprint(main)
 
     return app

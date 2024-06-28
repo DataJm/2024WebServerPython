@@ -14,4 +14,15 @@
     </form>
     <hr>
     <!-- Ciclo for para las tarjetas (card) de cada lista -->
+    {% for list in user_lists %}
+        <div class="card my-2">
+            <div class="card-body">
+                <h5 class="card-title">{{ list.name }}</h5>
+                <p class="card-text">{{ list.items }}</p>
+                <form method="POST" action="{{ url_for('main.delete_list', list_id=list.id) }}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
